@@ -24,20 +24,25 @@ final class ViewController: UIViewController {
         #if arch(arm) || arch(arm64)
         let panoramaView = PanoramaView(frame: view.bounds, device: device)
         #else
-        let panoramaView = PanoramaView(frame: view.bounds) // iOS Simulator
+//        let panoramaView = PanoramaView(frame: view.bounds) // iOS Simulator
+        let panoramaView = PanoramaView(frame: CGRect(x: 0, y: 0, width: 375, height: 280)) // iOS Simulator
         #endif
+        panoramaView.orientationNode.fieldOfView = 100
+//        panoramaView.setAllowsVerticalRotation(false)
+        panoramaView.setMinimumHorizontalRotationAngle(-130 / 180 * .pi)
+        panoramaView.setMaximumHorizontalRotationAngle(130 / 180 * .pi)
         panoramaView.setNeedsResetRotation()
         panoramaView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(panoramaView)
 
         // fill parent view
-        let constraints: [NSLayoutConstraint] = [
-            panoramaView.topAnchor.constraint(equalTo: view.topAnchor),
-            panoramaView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            panoramaView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            panoramaView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
+//        let constraints: [NSLayoutConstraint] = [
+//            panoramaView.topAnchor.constraint(equalTo: view.topAnchor),
+//            panoramaView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            panoramaView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            panoramaView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+//        ]
+//        NSLayoutConstraint.activate(constraints)
 
         // double tap to reset rotation
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: panoramaView, action: #selector(PanoramaView.setNeedsResetRotation(_:)))
@@ -46,7 +51,7 @@ final class ViewController: UIViewController {
 
         self.panoramaView = panoramaView
 
-        panoramaView.load(#imageLiteral(resourceName: "Sample"), format: .mono)
+        panoramaView.load(#imageLiteral(resourceName: "Sample_2"), format: .mono)
     }
 
     override func viewDidLoad() {

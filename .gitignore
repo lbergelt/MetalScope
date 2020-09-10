@@ -63,3 +63,7 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+Examples/MonoImage/Sources/Assets.xcassets/Sample_2.imageset/200731_wbk-web-vorschau_eingang.jpg
+Examples/MonoImage/Sources/Assets.xcassets/Sample_1.imageset/200731_wbk-web-vorschau_insel-2.jpg
+Examples/MonoImage/Sources/Assets.xcassets/Sample_2.imageset/Contents.json
+Examples/MonoImage/Sources/Assets.xcassets/Sample_1.imageset/Contents.json

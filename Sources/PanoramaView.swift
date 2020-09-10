@@ -145,11 +145,13 @@ extension PanoramaView {
         interfaceOrientationUpdater.updateInterfaceOrientation(with: transitionCoordinator)
     }
 
+    @objc
     public func setNeedsResetRotation(animated: Bool = false) {
         panGestureManager.stopAnimations()
         orientationNode.setNeedsResetRotation(animated: animated)
     }
-
+    
+    @objc
     public func setNeedsResetRotation(_ sender: Any?) {
         setNeedsResetRotation(animated: true)
     }
@@ -202,4 +204,39 @@ extension PanoramaView: SCNSceneRendererDelegate {
     public func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
         sceneRendererDelegate?.renderer?(renderer, didRenderScene: scene, atTime: time)
     }
+}
+
+
+//New
+extension PanoramaView {
+
+    public func setAllowsVerticalRotation(_ allow: Bool = false) {
+        panGestureManager.allowsVerticalRotation = allow
+    }
+    public func setAllowsHorizontalRotation(_ allow: Bool = false) {
+        panGestureManager.allowsHorizontalRotation = allow
+    }
+    
+    public func setMinimumVerticalRotationAngle(_ angle: Float = -60 / 180 * .pi) {
+        panGestureManager.minimumVerticalRotationAngle = angle
+    }
+    public func setMaximumVerticalRotationAngle(_ angle: Float = -60 / 180 * .pi) {
+        panGestureManager.maximumVerticalRotationAngle = angle
+    }
+    
+    public func setMinimumHorizontalRotationAngle(_ angle: Float = -150 / 180 * .pi) {
+        panGestureManager.minimumHorizontalRotationAngle = angle
+    }
+    public func setMaximumHorizontalRotationAngle(_ angle: Float = 150 / 180 * .pi) {
+        panGestureManager.maximumHorizontalRotationAngle = angle
+    }
+//    manager.minimumVerticalRotationAngle = -60 / 180 * .pi
+//    manager.maximumVerticalRotationAngle = 60 / 180 * .pi
+//
+//
+//    public var allowsVerticalRotation = true
+//    var minimumVerticalRotationAngle: Float?
+//    var maximumVerticalRotationAngle: Float?
+//
+//    public var allowsHorizontalRotation = true
 }

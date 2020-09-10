@@ -13,11 +13,11 @@ import SceneKit
 final class PanoramaPanGestureManager {
     let rotationNode: SCNNode
 
-    var allowsVerticalRotation = true
+    public var allowsVerticalRotation = true
     var minimumVerticalRotationAngle: Float?
     var maximumVerticalRotationAngle: Float?
 
-    var allowsHorizontalRotation = true
+    public var allowsHorizontalRotation = true
     var minimumHorizontalRotationAngle: Float?
     var maximumHorizontalRotationAngle: Float?
 
